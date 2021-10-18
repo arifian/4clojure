@@ -1,11 +1,11 @@
 (defproject foreclojure "2.0.0-rc2"
   :description "4clojure - a website for learning Clojure"
-  :dependencies [[org.clojure/clojure "1.4.0"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [compojure "1.1.0"]
                  [hiccup "1.0.0"]
                  [clojail "1.0.6"]
                  [lib-noir "0.1.1"]
-                 [congomongo "0.1.9"]
+                 [congomongo "2.2.3"]
                  [org.jasypt/jasypt "1.7"]
                  [cheshire "4.0.0"]
                  [useful "0.8.3-alpha4"]

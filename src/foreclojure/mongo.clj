@@ -1,17 +1,40 @@
 (ns foreclojure.mongo
   (:use somnium.congomongo
+        [somnium.congomongo.config :refer [*mongo-config*]]
         [foreclojure.data-set :only [load-problems]]
         [foreclojure.config   :only [config]]
         [foreclojure.problems :only [number-from-mongo-key solved-stats get-problem-list]]
         [foreclojure.users    :only [get-users]]))
 
 (defn connect-to-db []
-  (let [{:keys [db-user db-pwd db-host db-name]} config]
-    (mongo!
-     :host (or db-host "localhost")
-     :db   (or db-name "mydb"))
-    (when (and db-user db-pwd)
-      (authenticate db-user db-pwd))))
+  (let [{:keys [db-user db-pwd db-host db-name]} config
+        db-name                                  (or db-name "mydb")
+        db-host                                  (or db-host "localhost")]
+    (->> (if (and db-user db-pwd)
+           (make-connection db-name
+                            :instances [{:host db-host
+                                         :port 27017}]
+                            :username db-user
+                            :password db-pwd)
+           (make-connection db-name
+                            :instances [{:host db-host
+                                         :port 27017}]))
+         set-connection!)))
+
+;; (defn connect-to-db []
+;;   (let [{:keys [db-user db-pwd db-host db-name]} config]
+;;     (mongo!
+;;      :host (or db-host "localhost")
+;;      :db   (or db-name "mydb"))
+;;     (when (and db-user db-pwd)
+;;       (authenticate db-user db-pwd))))
+
+(comment
+  (connect-to-db)
+  (fetch-one :problems)
+  (get-coll :problems)
+  *mongo-config*
+  )
 
 (defn prepare-problems []
   (when-not (fetch-one :problems)
@@ -67,3 +90,7 @@
   (prepare-users)
   (prepare-solutions)
   (reconcile-solved-count))
+
+(comment
+  (prepare-mongo)
+  )

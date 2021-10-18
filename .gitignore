@@ -12,3 +12,4 @@ pom.xml
 .emacs-project
 .lein-failures
 target
+.nrepl-port
