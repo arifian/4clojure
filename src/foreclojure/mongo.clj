@@ -1,5 +1,5 @@
 (ns foreclojure.mongo
-  (:require [foreclojure.data-set-oxal :as [d-oxal]])
+  (:require [foreclojure.data-set-oxal :as d-oxal])
   (:use somnium.congomongo
         [somnium.congomongo.config :refer [*mongo-config*]]
         [foreclojure.data-set :only [load-problems]]
@@ -39,9 +39,8 @@
 
 (defn prepare-problems []
   (when-not (fetch-one :problems)
-    (load-problems))
-  (when-not (fetch-one :problems)
-    (insert-init-seq))
+    (do (d-oxal/insert-init-seq)
+        (d-oxal/load-problems-2)))
   (add-index! :problems [:solved]))
 
 (defn prepare-seqs []
