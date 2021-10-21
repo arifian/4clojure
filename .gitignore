@@ -13,3 +13,4 @@ pom.xml
 .lein-failures
 target
 .nrepl-port
+.lein-repl-history

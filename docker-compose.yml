@@ -1,0 +1,17 @@
+version: '3'
+# prototyping clojure docker
+
+services:
+  4clojure:
+    # image: clojure:openjdk-8-lein-2.9.7-buster
+    image: 4clojure-init:latest
+    container_name: 4clojure
+    # command: tail -f /dev/null
+    command: bash -c "/usr/local/bin/lein ring server-headless"
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/ubuntu/docker-4clojure/dir:/root/4clojure
+    working_dir: /root/4clojure
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
