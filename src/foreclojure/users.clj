@@ -198,8 +198,7 @@
      :content
      (list
       [:div#profile-pic (gravatar-img {:email email, :size 80
-                                       :class "user-profile-img"
-                                       :default "images/gus-of-disapproval.png"})]
+                                       :class "user-profile-img"})]
       [:div.user-profile-name page-title]
       (if-user [{:keys [_id following]}]
         (if (not= _id user-id)
