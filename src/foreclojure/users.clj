@@ -94,7 +94,7 @@
     [:h2 "Your Ranking"]
     [:div.ranking (str "Username: ")
      (when contributor [:span.contributor "* "])
-     [:a.user-profile-link make-user-url user]]
+     [:a.user-profile-link (make-user-url user) user]]
     [:div.ranking (str "Rank: " rank)]
     [:div.ranking (str "Problems Solved: " (count solved))]
     [:br]
