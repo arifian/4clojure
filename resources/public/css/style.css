@@ -439,6 +439,7 @@ div#problems-error {
 table.my-table {
    padding: 2px;
    border-collapse: collapse;
+   width: 100%;
 }
 
 table.my-table td {

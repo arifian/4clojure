@@ -119,18 +119,19 @@
      [:table.my-table {:id table-name}
       [:thead
        [:tr
-        [:th {:style "width: 40px;" } "Rank"]
-        [:th {:style "width: 200px;"} "Username"]
-        [:th {:style "width: 180px;"} "Problems Solved"]
-        [:th "Following"]]]
+        [:th {:style "width: 1em;" } "Rank"]
+        [:th {:style "width: 35em;"} "Username"]
+        [:th {:style "width: 1em;"} "Problems Solved"]
+        [:th {:style "width: 1em;"} "Following"]
+        [:th {:style "width: 35em;"} "Email"]]]
       (map-indexed (fn [rownum {:keys [_id email position rank user contributor solved]}]
                      [:tr (row-class rownum)
                       [:td (rank-class position) rank]
-                      [:td
-                       (gravatar-img {:email email :class "gravatar"})
+                      [:td (gravatar-img {:email email :class "gravatar"})
                        [:a.user-profile-link {:href (str "/user/" user)} user (when contributor [:span.contributor " *"])]]
                       [:td.centered (count solved)]
-                      [:td (following-checkbox user-id following _id user)]])
+                      [:td (following-checkbox user-id following _id user)]
+                      [:td email]])
                    user-set)])))
 
 (defn generate-datatable-users-list [user-set]
