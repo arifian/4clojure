@@ -42,7 +42,7 @@
                 ["/problems" "Problem List"]
                 ["/users" "Top Users"]
                 ["/directions" "Help"]
-                ["http://try-clojure.org" "REPL" true]
+                ["https://clojurescript.io" "REPL" true]
                 ["http://clojuredocs.org" "Docs" true]]]
            [:a.menu (assoc (when tabbed {:target "_blank"})
                       :href link)
