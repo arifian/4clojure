@@ -2,7 +2,8 @@
   (:require [compojure.route            :as   route]
             [compojure.handler          :as   handler]
             [foreclojure.config         :as   config]
-            [noir.session               :as   session])
+            [noir.session               :as   session]
+            [clojure.tools.namespace.repl :as ns-repl])
   (:import  [java.lang                  OutOfMemoryError])
   (:use     [compojure.core             :only [defroutes routes GET]]
             [foreclojure.static         :only [static-routes]]
@@ -31,6 +32,12 @@
             [mongo-session.core         :only [mongo-session]]))
 
 (def ^:dynamic *block-server* false)
+
+(defonce dev-system (atom nil))
+
+;; (reset! dev-system "newval")
+
+(ns-repl/set-refresh-dirs "src/foreclojure")
 
 (defroutes resource-routes
   (-> (resources "/*")
@@ -118,3 +125,14 @@
 (defn -main [& args]
   (binding [*block-server* true]
     (run)))
+
+(defn start
+  "start dev environment"
+  []
+  (reset! dev-system (run)))
+
+(defn reset
+  "reset dev environment"
+  []
+  (.stop @dev-system)
+  (ns-repl/refresh :after 'foreclojure.core/start))
