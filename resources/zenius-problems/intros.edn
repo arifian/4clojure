@@ -1,0 +1,65 @@
+[ ;;  easy expandable problem sets [intros problem]
+ {:id          45
+  :title       "Intro to Iterate"
+  :tests       ["(= __ (take 5 (iterate #(+ 3 %) 1)))"]
+  :description "The iterate function can be used to produce
+an infinite lazy sequence."
+  :difficulty  "Easy" 
+  :tags        ["seqs"]}
+ {:id          48
+  :title       "Intro to some"
+  :tests       ["(= __ (some #{2 7 6} [5 6 7 8]))"
+                "(= __ (some #(when (even? %) %) [5 6 7 8]))"]
+  :description "The some function takes
+a predicate function and a collection.
+It returns the first logical true value of (predicate x)
+where x is an item in the collection."
+  :difficulty  "Easy" 
+  :tags        []}
+ {:id          52
+  :title       "Intro to Destructuring"
+  :tests       ["(= [2 4] (let [[a b c d e f g] (range)] __))"]
+  :description "Let bindings and function parameter lists
+support destructuring."
+  :difficulty  "Elementary" 
+  :tags        ["destructuring"]}
+ {:id          173
+  :title       "Intro to Destructuring 2"
+  :description "Sequential destructuring allows you to bind symbols to parts of
+sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
+the bindings so all let-parts evaluate to 3."
+  :tests       ["(= 3
+                      (let [[__] [+ (range 3)]] (apply __))
+                      (let [[[__] b] [[+ 1] 2]] (__ b))
+                      (let [[__] [inc 2]] (__)))"]
+  :difficulty  "Easy" 
+  :tags        ["destructuring"]}
+ {:id          64
+  :title       "Intro to Reduce"
+  :tests       ["(= 15 (reduce __ [1 2 3 4 5]))"
+                "(=  0 (reduce __ []))"
+                "(=  6 (reduce __ 1 [2 3]))"]
+  :description "Reduce takes a 2 argument function
+and an optional starting value.
+It then applies the function to the first 2 items in the sequence
+(or the starting value and the first element of the sequence).
+In the next iteration the function will be called on
+the previous return value and the next item from the sequence,
+thus reducing the entire collection to one value.
+Don't worry, it's not as complicated as it sounds."
+  :difficulty  "Elementary" 
+  :tags        ["seqs"]}
+ {:id          76
+  :title       "Intro to Trampoline"
+  :tests       ["(= __\n   (letfn\n     [(foo [x y] #(bar (conj x y) y))\n      (bar [x y] (if (> (last x) 10)\n                   x\n                   #(foo x (+ 2 y))))]\n     (trampoline foo [] 1)))"]
+  :description "The trampoline function takes a function f
+and a variable number of parameters.
+Trampoline calls f with any parameters that were supplied.
+If f returns a function, trampoline
+calls that function with no arguments.
+This is repeated, until the return value is not a function,
+and then trampoline returns that non-function value.
+This is useful for implementing mutually recursive algorithms
+in a way that won't consume the stack."
+  :difficulty  "Medium" 
+  :tags        ["recursion"]}]
