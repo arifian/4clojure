@@ -11,16 +11,16 @@
   :description "Assuming you have done <a href=\"345\"> \"Intro to Iterate 2\"</a>. Here is a little twist to test your understanding."
   :difficulty  "Easy" 
   :tags        ["seqs"]}
- ;; {:id          48
-;;   :title       "Intro to some"
-;;   :tests       ["(= __ (some #{2 7 6} [5 6 7 8]))"
-;;                 "(= __ (some #(when (even? %) %) [5 6 7 8]))"]
-;;   :description "The some function takes
-;; a predicate function and a collection.
-;; It returns the first logical true value of (predicate x)
-;; where x is an item in the collection."
-;;   :difficulty  "Easy" 
-;;   :tags        []}
+ {:id          48
+  :title       "Intro to some"
+  :tests       ["(= __ (some #{2 7 6} [5 6 7 8]))"
+                "(= __ (some #(when (even? %) %) [5 6 7 8]))"]
+  :description "The some function takes
+a predicate function and a collection.
+It returns the first logical true value of (predicate x)
+where x is an item in the collection."
+  :difficulty  "Easy" 
+  :tags        []}
 ;;  {:id          52
 ;;   :title       "Intro to Destructuring"
 ;;   :tests       ["(= [2 4] (let [[a b c d e f g] (range)] __))"]
