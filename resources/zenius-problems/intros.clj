@@ -74,6 +74,16 @@ support destructuring."
    :tags        ["destructuring"]})
 
 (def problem-352-destructuring-deprac-1
+  [(= [7 '(3 2 1 0)] (let [my-coll           (take 10 (range))
+                           [a b c d e f & g] (reverse my-coll)]
+                       '_))])
+
+(def problem-452-destructuring-deprac-2
+  [(= '_ (let [my-hash-map              {:foo :foos :bar :rodah}
+               {a-key :foo b-key :bar} my-hash-map]
+           {a-key b-key}))])
+
+(def problem-552-destructuring-deprac-3
   [(->> (let [my-coll             [(range) (range 2 10)]
               [[e f g] [a b c d]] my-coll]
           ['_])
