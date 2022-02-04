@@ -21,39 +21,39 @@ It returns the first logical true value of (predicate x)
 where x is an item in the collection."
   :difficulty  "Easy" 
   :tags        []}
-;;  {:id          52
-;;   :title       "Intro to Destructuring"
-;;   :tests       ["(= [2 4] (let [[a b c d e f g] (range)] __))"]
-;;   :description "Let bindings and function parameter lists
-;; support destructuring."
-;;   :difficulty  "Elementary" 
-;;   :tags        ["destructuring"]}
-;;  {:id          173
-;;   :title       "Intro to Destructuring 2"
-;;   :description "Sequential destructuring allows you to bind symbols to parts of
-;; sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
-;; the bindings so all let-parts evaluate to 3."
-;;   :tests       ["(= 3
-;;                       (let [[__] [+ (range 3)]] (apply __))
-;;                       (let [[[__] b] [[+ 1] 2]] (__ b))
-;;                       (let [[__] [inc 2]] (__)))"]
-;;   :difficulty  "Easy" 
-;;   :tags        ["destructuring"]}
-;;  {:id          64
-;;   :title       "Intro to Reduce"
-;;   :tests       ["(= 15 (reduce __ [1 2 3 4 5]))"
-;;                 "(=  0 (reduce __ []))"
-;;                 "(=  6 (reduce __ 1 [2 3]))"]
-;;   :description "Reduce takes a 2 argument function
-;; and an optional starting value.
-;; It then applies the function to the first 2 items in the sequence
-;; (or the starting value and the first element of the sequence).
-;; In the next iteration the function will be called on
-;; the previous return value and the next item from the sequence,
-;; thus reducing the entire collection to one value.
-;; Don't worry, it's not as complicated as it sounds."
-;;   :difficulty  "Elementary" 
-;;   :tags        ["seqs"]}
+ {:id          52
+  :title       "Intro to Destructuring"
+  :tests       ["(= [2 4] (let [[a b c d e f g] (range)] __))"]
+  :description "Let bindings and function parameter lists
+support destructuring."
+  :difficulty  "Elementary" 
+  :tags        ["destructuring"]}
+ {:id          173
+  :title       "Intro to Destructuring 2"
+  :description "Sequential destructuring allows you to bind symbols to parts of
+sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
+the bindings so all let-parts evaluate to 3."
+  :tests       ["(= 3
+                      (let [[__] [+ (range 3)]] (apply __))
+                      (let [[[__] b] [[+ 1] 2]] (__ b))
+                      (let [[__] [inc 2]] (__)))"]
+  :difficulty  "Easy" 
+  :tags        ["destructuring"]}
+ {:id          64
+  :title       "Intro to Reduce"
+  :tests       ["(= 15 (reduce __ [1 2 3 4 5]))"
+                "(=  0 (reduce __ []))"
+                "(=  6 (reduce __ 1 [2 3]))"]
+  :description "Reduce takes a 2 argument function
+and an optional starting value.
+It then applies the function to the first 2 items in the sequence
+(or the starting value and the first element of the sequence).
+In the next iteration the function will be called on
+the previous return value and the next item from the sequence,
+thus reducing the entire collection to one value.
+Don't worry, it's not as complicated as it sounds."
+  :difficulty  "Elementary" 
+  :tags        ["seqs"]}
 ;;  {:id          76
 ;;   :title       "Intro to Trampoline"
 ;;   :tests       ["(= __\n   (letfn\n     [(foo [x y] #(bar (conj x y) y))\n      (bar [x y] (if (> (last x) 10)\n                   x\n                   #(foo x (+ 2 y))))]\n     (trampoline foo [] 1)))"]

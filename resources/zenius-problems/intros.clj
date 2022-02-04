@@ -73,17 +73,30 @@ support destructuring."
    :difficulty  "Elementary" 
    :tags        ["destructuring"]})
 
-(def problem-352-destructuring-deprac-1
+(def problem-173-destructuring-reference
+  {:id          173
+   :title       "Intro to Destructuring 2"
+   :description "Sequential destructuring allows you to bind symbols to parts of
+sequential things (vectors, lists, seqs, etc.): (let [bindings* ] exprs*) Complete
+the bindings so all let-parts evaluate to 3."
+   :tests       ["(= 3
+                      (let [[__] [+ (range 3)]] (apply __))
+                      (let [[[__] b] [[+ 1] 2]] (__ b))
+                      (let [[__] [inc 2]] (__)))"]
+   :difficulty  "Easy" 
+   :tags        ["destructuring"]})
+
+(def problem-352-destructuring-deprac-1-1
   [(= [7 '(3 2 1 0)] (let [my-coll           (take 10 (range))
                            [a b c d e f & g] (reverse my-coll)]
                        '_))])
 
-(def problem-452-destructuring-deprac-2
+(def problem-452-destructuring-deprac-1-2
   [(= '_ (let [my-hash-map              {:foo :foos :bar :rodah}
                {a-key :foo b-key :bar} my-hash-map]
            {a-key b-key}))])
 
-(def problem-552-destructuring-deprac-3
+(def problem-552-destructuring-deprac-1-3
   [(->> (let [my-coll             [(range) (range 2 10)]
               [[e f g] [a b c d]] my-coll]
           ['_])
@@ -98,3 +111,25 @@ support destructuring."
                c :sit}    my-hash-map]
           {'_})
         (= {2 4}))])
+
+
+(def problem-64-reduce-reference
+  {:id          64
+   :title       "Intro to Reduce"
+   :tests       ["(= 15 (reduce __ [1 2 3 4 5]))"
+                 "(=  0 (reduce __ []))"
+                 "(=  6 (reduce __ 1 [2 3]))"]
+   :description "Reduce takes a 2 argument function
+and an optional starting value.
+It then applies the function to the first 2 items in the sequence
+(or the starting value and the first element of the sequence).
+In the next iteration the function will be called on
+the previous return value and the next item from the sequence,
+thus reducing the entire collection to one value.
+Don't worry, it's not as complicated as it sounds."
+   :difficulty  "Elementary" 
+   :tags        ["seqs"]})
+
+;; [(= 15 (reduce + [1 2 3 4 5]))
+;;  (=  0 (reduce + []))
+;;  (=  6 (reduce + 1 [2 3]))]
