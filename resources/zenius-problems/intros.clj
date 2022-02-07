@@ -144,3 +144,10 @@ Don't worry, it's not as complicated as it sounds."
    (= 1 (reduce '_ [1]))
    (= '(:d :c :b :a) (reduce '_ '() [:a :b :c :d]))])
 
+(def problem-464-reduce-deprac-2
+  [(= '(5 4 3 2 1) (reduce '_ [] (range 1 6)))
+   (= 1 (reduce '_ [1]))
+   (= '(:d :c :b :a) (reduce '_ '() [:a :b :c :d]))])
+
+(def problem-564-reduce-deprac-3
+  [(= '(1 2 4 5 6 8 9 10) (reduce '_ [(range 1 3) (range 4 7) (range 8 11)]))])
