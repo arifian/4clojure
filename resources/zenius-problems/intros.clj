@@ -109,7 +109,7 @@ the bindings so all let-parts evaluate to 3."
                a :dolor
                b :amet
                c :sit}    my-hash-map]
-          {'_})
+          {'_ '_})
         (= {2 4}))])
 
 
@@ -133,3 +133,14 @@ Don't worry, it's not as complicated as it sounds."
 ;; [(= 15 (reduce + [1 2 3 4 5]))
 ;;  (=  0 (reduce + []))
 ;;  (=  6 (reduce + 1 [2 3]))]
+
+(def problem-364-reduce-deprac-1
+  [(= "1,2,3,4,5" (reduce '_ (range 1 6)))
+   (= 1 (reduce '_ [1]))
+   (= ":a,:b,:c,:d" (reduce '_ :a [:b :c :d]))])
+
+(def problem-464-reduce-deprac-2
+  [(= '(5 4 3 2 1) (reduce '_ [] (range 1 6)))
+   (= 1 (reduce '_ [1]))
+   (= '(:d :c :b :a) (reduce '_ '() [:a :b :c :d]))])
+
