@@ -26,3 +26,30 @@ so you can use Java string methods on them."
   [(= '_ (clojure.string/upper-case "hello world"))
    (= '_ (apply str [\H \E \L \L \O " " \W \O \R \L \D]))])
 
+(def problem-4-list-reference
+  {:id          4
+   :title       "Lists"
+   :tests       ["(= (list __) '(:a :b :c))"]
+   :description "Lists can be constructed with either
+a function or a quoted form." 
+   :difficulty  "Elementary" 
+   :tags        []})
+
+(def problem-304-list-deprac-1
+  [(= '('_) '(:a :b :c))
+   (= (apply list ['_]) '(:a :b :c))])
+
+(def problem-5-conj-reference
+  {:id          5
+   :title       "conj on lists"
+   :tests       ["(= __ (conj '(2 3 4) 1))"
+                 "(= __ (conj '(3 4) 2 1))"]
+   :description "When operating on a list,
+the conj function will return a new list
+with one or more items \"added\" to the front." 
+   :difficulty  "Elementary" 
+   :tags        []})
+
+(def problem-305-conj-deprac-1
+  [(= '_ (conj [3 4 2] 1))
+   (= '_ (conj [3 4] 2 1))])

@@ -29,15 +29,15 @@ a function or a quoted form."
   :difficulty  "Elementary" 
   :tags        []}
 
-;;  {:id          5
-;;   :title       "conj on lists"
-;;   :tests       ["(= __ (conj '(2 3 4) 1))"
-;;                 "(= __ (conj '(3 4) 2 1))"]
-;;   :description "When operating on a list,
-;; the conj function will return a new list
-;; with one or more items \"added\" to the front." 
-;;   :difficulty  "Elementary" 
-;;   :tags        []}
+ {:id          5
+  :title       "conj on lists"
+  :tests       ["(= __ (conj '(2 3 4) 1))"
+                "(= __ (conj '(3 4) 2 1))"]
+  :description "When operating on a list,
+the conj function will return a new list
+with one or more items \"added\" to the front." 
+  :difficulty  "Elementary" 
+  :tags        []}
 
 ;;  {:id          6 :title "Vectors"
 ;;   :tests       ["(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))"]
