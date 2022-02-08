@@ -1,0 +1,180 @@
+[;; {:id          1
+;;   :title       "Nothing but the Truth"
+;;   :tests       ["(= __ true)"]
+;;   :description "Complete the expression so
+;; it will evaluate to true." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+ {:id          2
+  :title       "Simple Math"
+  :tests       ["(= (- 10 (* 2 3)) __)"]
+  :description "Innermost forms are evaluated first." 
+  :difficulty  "Elementary" 
+  :tags        []}
+ 
+ {:id          3
+  :title       "Strings"
+  :tests       ["(= __ (.toUpperCase \"hello world\"))"]
+  :description "Clojure strings are Java strings,
+so you can use Java string methods on them." 
+  :difficulty  "Elementary" 
+  :tags        []}
+
+ {:id          4
+  :title       "Lists"
+  :tests       ["(= (list __) '(:a :b :c))"]
+  :description "Lists can be constructed with either
+a function or a quoted form." 
+  :difficulty  "Elementary" 
+  :tags        []}
+
+;;  {:id          5
+;;   :title       "conj on lists"
+;;   :tests       ["(= __ (conj '(2 3 4) 1))"
+;;                 "(= __ (conj '(3 4) 2 1))"]
+;;   :description "When operating on a list,
+;; the conj function will return a new list
+;; with one or more items \"added\" to the front." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          6 :title "Vectors"
+;;   :tests       ["(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))"]
+;;   :description "Vectors can be constructed several ways.
+;; You can compare them with lists." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          7
+;;   :title       "conj on vectors"
+;;   :tests       ["(= __ (conj [1 2 3] 4))"
+;;                 "(= __ (conj [1 2] 3 4))"]
+;;   :description "When operating on a Vector,
+;; the conj function will return a new vector
+;; with one or more items \"added\" to the end." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          8
+;;   :title       "Sets"
+;;   :tests       ["(= __ (set '(:a :a :b :c :c :c :c :d :d)))"
+;;                 "(= __ (clojure.set/union #{:a :b :c} #{:b :c :d}))"]
+;;   :description "Sets are collections of unique values." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          9 :title "conj on sets"
+;;   :tests       ["(= #{1 2 3 4} (conj #{1 4 3} __))"]
+;;   :description "When operating on a set,
+;; the conj function returns a new set with one or more keys \"added\"." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          10 :title "Maps"
+;;   :tests       ["(= __ ((hash-map :a 10, :b 20, :c 30) :b))"
+;;           "(= __ (:b {:a 10, :b 20, :c 30}))"]
+;;   :description "Maps store key-value pairs.
+;; Both maps and keywords can be used as lookup functions.
+;; Commas are whitespace." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          11 :title "conj on maps"
+;;   :tests       ["(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))"]
+;;   :description "When operating on a map,
+;; the conj function returns a new map
+;; with one or more key-value pairs \"added\"." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          12
+;;   :title       "Sequences"
+;;   :tests       ["(= __ (first '(3 2 1)))"
+;;                 "(= __ (second [2 3 4]))"
+;;                 "(= __ (last (list 1 2 3)))"]
+;;   :description "All Clojure collections support sequencing.
+;; You can operate on sequences with functions
+;; like first, second, and last." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          13
+;;   :title       "rest"
+;;   :tests       ["(= __ (rest [10 20 30 40]))"]
+;;   :description "The rest function will return all the items
+;; of a sequence except the first." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          14
+;;   :title       "Functions"
+;;   :tests       ["(= __ ((fn add-five [x] (+ x 5)) 3))"
+;;                 "(= __ ((fn [x] (+ x 5)) 3))"
+;;                 "(= __ (#(+ % 5) 3))"
+;;                 "(= __ ((partial + 5) 3))"]
+;;   :description "Clojure has many different ways to create functions." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          15
+;;   :title       "Double Down"
+;;   :tests       ["(= (__ 2) 4)"
+;;                 "(= (__ 3) 6)"
+;;                 "(= (__ 11) 22)"
+;;                 "(= (__ 7) 14)"]
+;;   :description "Write a function which doubles a number." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          16
+;;   :title       "Hello World"
+;;   :tests       ["(= (__ \"Dave\") \"Hello, Dave!\")"
+;;                 "(= (__ \"Jenn\") \"Hello, Jenn!\")"
+;;                 "(= (__ \"Rhea\") \"Hello, Rhea!\")"]
+;;   :description "Write a function which returns a personalized greeting." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          17
+;;   :title       "map"
+;;   :tests       ["(= __ (map #(+ % 5) '(1 2 3)))"]
+;;   :description "The map function takes two arguments:
+;; a function (f) and a sequence (s).
+;; Map returns a new sequence consisting of
+;; the result of applying f to each item of s.
+;; Do not confuse the map function with the map data structure." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          18
+;;   :title       "filter"
+;;   :tests       ["(= __ (filter #(> % 5) '(3 4 5 6 7)))"]
+;;   :description "The filter function takes two arguments:
+;; a predicate function (f) and a sequence (s).
+;; Filter returns a new sequence consisting
+;; of all the items of s for which (f item) returns true." 
+;;   :difficulty  "Elementary" 
+;;   :tags        []}
+
+;;  {:id          19
+;;   :restricted  ["last"]
+;;   :title       "Last Element"
+;;   :tests       ["(= (__ [1 2 3 4 5]) 5)"
+;;                 "(= (__ '(5 4 3)) 3)"
+;;                 "(= (__ [\"b\" \"c\" \"d\"]) \"d\")"]
+;;   :description "Write a function which returns
+;; the last element in a sequence." 
+;;   :difficulty  "Easy" 
+;;   :tags        ["seqs" "core-functions"]}
+
+;;  {:id          20
+;;   :title       "Penultimate Element"
+;;   :tests       ["(= (__ (list 1 2 3 4 5)) 4)"
+;;                 "(= (__ [\"a\" \"b\" \"c\"]) \"b\")"
+;;                 "(= (__ [[1 2] [3 4]]) [1 2])"]
+;;   :description "Write a function which returns
+;; the second to last element from a sequence." 
+;;   :difficulty  "Easy" 
+;;   :tags        ["seqs"]}
+ ]

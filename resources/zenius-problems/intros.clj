@@ -1,5 +1,4 @@
-(ns intros
-  (:use [clojure.test]))
+(ns intros)
 
 (comment
   (read-string (slurp "resources/zenius-problems/intros.edn")))
@@ -16,8 +15,8 @@ an infinite lazy sequence."
    :tags ["seqs"]})
 
 (def problem-345-iterate-deprac-1
-  (->> (map #(take 3 %) [(iterate #(+ 3 %) 3) (iterate #(+ 7 %) 8) (iterate #(+ 6 %) 9) (iterate #(+ 9 %) 2) (iterate #(+ 11 %) 7)])
-       (= '_)))
+  [(->> (map #(take 3 %) [(iterate #(+ 3 %) 3) (iterate #(+ 7 %) 8) (iterate #(+ 6 %) 9) (iterate #(+ 9 %) 2) (iterate #(+ 11 %) 7)])
+        (= '_))])
 
 (comment
   "345 Deprac iterate"
@@ -25,12 +24,12 @@ an infinite lazy sequence."
         (= __))")
 
 (def problem-445-iterate-deprac-2
-  (->> (take 10 (iterate (partial + 3) 1))
-       (iterate identity)
-       (take 4)
-       (map #(reduce + %))
-       (reduce +)
-       (= '_)))
+  [(->> (take 10 (iterate (partial + 3) 1))
+        (iterate identity)
+        (take 4)
+        (map #(reduce + %))
+        (reduce +)
+        (= '_))])
 
 (comment
   "445 iterate with a twist"
@@ -129,10 +128,6 @@ thus reducing the entire collection to one value.
 Don't worry, it's not as complicated as it sounds."
    :difficulty  "Elementary" 
    :tags        ["seqs"]})
-
-;; [(= 15 (reduce + [1 2 3 4 5]))
-;;  (=  0 (reduce + []))
-;;  (=  6 (reduce + 1 [2 3]))]
 
 (def problem-364-reduce-deprac-1
   [(= "1,2,3,4,5" (reduce '_ (range 1 6)))

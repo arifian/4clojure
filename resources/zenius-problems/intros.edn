@@ -54,7 +54,7 @@ thus reducing the entire collection to one value.
 Don't worry, it's not as complicated as it sounds."
   :difficulty  "Elementary" 
   :tags        ["seqs"]}
-;;  {:id          76
+ ;; {:id          76
 ;;   :title       "Intro to Trampoline"
 ;;   :tests       ["(= __\n   (letfn\n     [(foo [x y] #(bar (conj x y) y))\n      (bar [x y] (if (> (last x) 10)\n                   x\n                   #(foo x (+ 2 y))))]\n     (trampoline foo [] 1)))"]
 ;;   :description "The trampoline function takes a function f
