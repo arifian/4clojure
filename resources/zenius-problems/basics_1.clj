@@ -50,6 +50,17 @@ with one or more items \"added\" to the front."
    :difficulty  "Elementary" 
    :tags        []})
 
-(def problem-305-conj-deprac-1
+(def problem-305-conj-deprac-1 ;; conj works differently on vectors
   [(= '_ (conj [3 4 2] 1))
    (= '_ (conj [3 4] 2 1))])
+
+(def problem-6-vector-reference
+  {:id          6 :title "Vectors"
+   :tests       ["(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))"]
+   :description "Vectors can be constructed several ways.
+You can compare them with lists." 
+   :difficulty  "Elementary" 
+   :tags        []})
+
+(def problem-306-vector-deprac-1 ;; pay attention to vec and vector
+  [(= ['_] (vec '(:a :b :c :d)) (apply vector '(:a :b :c :d)))])

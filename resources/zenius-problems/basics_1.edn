@@ -39,12 +39,12 @@ with one or more items \"added\" to the front."
   :difficulty  "Elementary" 
   :tags        []}
 
-;;  {:id          6 :title "Vectors"
-;;   :tests       ["(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))"]
-;;   :description "Vectors can be constructed several ways.
-;; You can compare them with lists." 
-;;   :difficulty  "Elementary" 
-;;   :tags        []}
+ {:id          6 :title "Vectors"
+  :tests       ["(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))"]
+  :description "Vectors can be constructed several ways.
+You can compare them with lists." 
+  :difficulty  "Elementary" 
+  :tags        []}
 
 ;;  {:id          7
 ;;   :title       "conj on vectors"
