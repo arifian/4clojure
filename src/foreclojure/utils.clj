@@ -104,22 +104,25 @@
   (re-find #"^.+@\S+\.\S{2,4}$" address))
 
 ;; Assuming that it will always need SSL. Will make it more flexible later.
-(defn send-email [{:keys [from to subject html text reply-to]}]
-  (let [{:keys [host port user pass]} config
+(defn send-email [{:keys [to subject html text reply-to]}]
+  (let [{:keys [host port user password from]} (:smtp config)
         base (doto (HtmlEmail.)
                (.setHostName host)
+               (.setSmtpPort port)
                (.setSSL true)
                (.setFrom from)
                (.setSubject subject)
-               (.setAuthentication user pass))]
+               (.addTo (first to))
+               (.addReplyTo from)
+               (.setAuthentication user password))]
     (when html
       (.setHtmlMsg base html))
     (when text
       (.setTextMsg base text))
-    (doseq [person to]
-      (.addTo base person))
-    (doseq [person reply-to]
-      (.addReplyTo base person))
+    ;; (doseq [person to]
+    ;;   (.addTo base person))
+    ;; (doseq [person reply-to]
+    ;;   (.addReplyTo base person))
     (.send base)))
 
 (defn from-mongo [data]
