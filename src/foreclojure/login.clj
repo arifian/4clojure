@@ -1,5 +1,6 @@
 (ns foreclojure.login
   (:require [noir.session             :as   session]
+            [foreclojure.config       :as   cfg]
             [ring.util.response       :as   response])
   (:import  [org.jasypt.util.password StrongPasswordEncryptor])
   (:use     [hiccup.form              :only [form-to label text-field password-field check-box]]
@@ -12,7 +13,9 @@
             [clojure.stacktrace       :only [print-cause-trace]]
             [somnium.congomongo       :only [update! fetch-one]]))
 
-(def password-reset-url "https://www.4clojure.com/settings")
+(def site-url (->> cfg/config :smtp :site-url))
+
+(def password-reset-url (str "https://" site-url "/settings"))
 
 (def login-box
   (form-to [:post "/login"]
@@ -86,7 +89,7 @@
            :to [email]
            :subject "Password reset"
            :text
-           (str "The password for your 4clojure.com account "
+           (str "The password for your "site-url" account "
                 name " has been reset to " pw ". Make sure to change it"
                 " soon at " password-reset-url " - pick"
                 " something you'll remember!")})

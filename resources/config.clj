@@ -14,7 +14,8 @@
         :port 587
         :password ""
         :from "foreprogen@zeniusnet.com"
-        :user "AKIATCASCLYJRXSFAZS5"}
+        :user "AKIATCASCLYJRXSFAZS5"
+        :site-url "foreprogen.zeniusnet.com"}
  :hosts {;; :static "static.4clojure.com"
          ;; :dynamic "www.4clojure.com"
          :redirects ["4clojure.com"]}
