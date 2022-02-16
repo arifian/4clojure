@@ -6,8 +6,7 @@
             [clojure.walk             :as   walk]
             [clojure.string           :as   string]
             [foreclojure.git          :as   git]
-            [hiccup.page              :as   hiccup]
-            [postal.core              :as   postal])
+            [hiccup.page              :as   hiccup])
   (:import  [java.net                 URLEncoder]
             (org.apache.commons.lang  StringEscapeUtils)
             (org.apache.commons.mail  HtmlEmail))
