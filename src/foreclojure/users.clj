@@ -217,6 +217,7 @@
                total  (count (get-problems difficulty))]
            [:tr
             [:td.count-label difficulty]
+            [:td.count-value solved "/" total]
             [:td.count-value
              [:div.progress-bar-bg
               [:div.progress-bar
