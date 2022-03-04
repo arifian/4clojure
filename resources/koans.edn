@@ -197,73 +197,91 @@
   :tags ["sets"],
   :title "sets-2",
   :id 742}
+ {:description "You can ask clojure for the union of two sets",
+  :tests ["(= __ (clojoure.set/union #{1 4 3 2} #{3 2 5}))"],
+  :difficulty "Basic",
+  :tags ["sets"],
+  :title "sets-3",
+  :id 743}
+ {:description "And also the intersection",
+  :tests ["(= __ (clojure.set/intersection #{1 4 3 2} #{3 2 5}))"],
+  :difficulty "Basic",
+  :tags ["sets"],
+  :title "sets-4",
+  :id 744}
+ {:description "But don't forget about the difference",
+  :tests ["(= __ (clojure.set/difference #{1 4 3 2 5} #{3 2 5}))"],
+  :difficulty "Basic",
+  :tags ["sets"],
+  :title "sets-5",
+  :id 745}
  {:description "Don't get lost when creating a map",
   :tests ["(= {:a 1, :b 2} (hash-map :a 1 __))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-0",
-  :id 743}
+  :id 746}
  {:description "A value must be supplied for each key",
   :tests ["(= {:a 1} (hash-map :a __))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-1",
-  :id 744}
+  :id 747}
  {:description "The size is the number of entries",
   :tests ["(= __ (count {:a 1, :b 2}))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-2",
-  :id 745}
+  :id 748}
  {:description "You can look up the value for a given key",
   :tests ["(= __ (get {:a 1, :b 2} :b))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-3",
-  :id 746}
+  :id 749}
  {:description "Maps can be used as functions to do lookups",
   :tests ["(= __ ({:a 1, :b 2} :a))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-4",
-  :id 747}
+  :id 750}
  {:description "And so can keywords",
   :tests ["(= __ (:a {:a 1, :b 2}))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-5",
-  :id 748}
+  :id 751}
  {:description "But map keys need not be keywords",
   :tests
   ["(= __ ({2006 \"Torino\", 2010 \"Vancouver\", 2014 \"Sochi\"} 2010))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-6",
-  :id 749}
+  :id 752}
  {:description "You may not be able to find an entry for a key",
   :tests ["(= __ (get {:a 1, :b 2} :c))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-7",
-  :id 750}
+  :id 753}
  {:description "But you can provide your own default",
   :tests ["(= __ (get {:a 1, :b 2} :c :key-not-found))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-8",
-  :id 751}
+  :id 754}
  {:description "You can find out if a key is present",
   :tests ["(= __ (contains? {:a nil, :b nil} :b))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-9",
-  :id 752}
+  :id 755}
  {:description "Or if it is missing",
   :tests ["(= __ (contains? {:a nil, :b nil} :c))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-10",
-  :id 753}
+  :id 756}
  {:description
   "Maps are immutable, but you can create a new and improved version",
   :tests
@@ -271,577 +289,167 @@
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-11",
-  :id 754}
+  :id 757}
  {:description
   "You can also create a new version with an entry removed",
   :tests ["(= __ (dissoc {1 \"January\", 2 \"February\"} 2))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-12",
-  :id 755}
+  :id 758}
  {:description
   "Often you will need to get the keys, but the order is undependable",
   :tests
-  ["(= (list __) (sort (keys {2010 \"Vancouver\", 2014 \"Sochi\", 2006 \"Torino\"})))"],
+  ["(= (list __ )\n       (sort (keys {2010 \"Vancouver\" 2014 \"Sochi\" 2006 \"Torino\"})))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-13",
-  :id 756}
+  :id 759}
  {:description "You can get the values in a similar way",
   :tests
-  ["(= (list __) (sort (vals {2006 \"Torino\", 2010 \"Vancouver\", 2014 \"Sochi\"})))"],
+  ["(= (list __)\n       (sort (vals {2006 \"Torino\" 2010 \"Vancouver\" 2014 \"Sochi\"})))"],
   :difficulty "Basic",
   :tags ["maps"],
   :title "maps-14",
-  :id 757}
+  :id 760}
  {:description
   "Calling a function is like giving it a hug with parentheses",
-  :tests ["(= __ (square 9))"],
+  :tests ["(let [square (fn [n] (* n n))]\n      (= __ (square 9)))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-0",
-  :id 758}
+  :id 761}
  {:description "Functions are usually defined before they are used",
-  :tests ["(= __ (multiply-by-ten 2))"],
+  :tests
+  ["(let [multiply-by-ten (fn [n] (* 10 n))]\n      (= __ (multiply-by-ten 2)))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-1",
-  :id 759}
+  :id 762}
  {:description "But they can also be defined inline",
   :tests ["(= __ ((fn [n] (* 5 n)) 2))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-2",
-  :id 760}
+  :id 763}
  {:description "Or using an even shorter syntax",
   :tests ["(= __ (#(* 15 %) 4))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-3",
-  :id 761}
+  :id 764}
  {:description "Even anonymous functions may take multiple arguments",
   :tests ["(= __ (#(+ %1 %2 %3) 4 5 6))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-4",
-  :id 762}
+  :id 765}
  {:description "Arguments can also be skipped",
   :tests ["(= __ (#(* 15 %2) 1 2))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-5",
-  :id 763}
+  :id 766}
  {:description "One function can beget another",
   :tests ["(= 9 (((fn [] __)) 4 5))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-6",
-  :id 764}
+  :id 767}
  {:description "Functions can also take other functions as input",
-  :tests ["(= 20 ((fn [f] (f 4 5)) __))"],
+  :tests ["(= 20 ((fn [f] (f 4 5))\n           __))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-7",
-  :id 765}
+  :id 768}
  {:description "Higher-order functions take function arguments",
-  :tests ["(= 25 (__ (fn [n] (* n n))))"],
+  :tests ["(= 25 (__\n           (fn [n] (* n n))))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-8",
-  :id 766}
+  :id 769}
  {:description
   "But they are often better written using the names of functions",
   :tests ["(= 25 (__ square))"],
   :difficulty "Basic",
   :tags ["functions"],
   :title "functions-9",
-  :id 767}
+  :id 770}
  {:description "You will face many decisions",
-  :tests ["(= __ (if (false? (= 4 5)) :a :b))"],
+  :tests
+  ["(= __ (if (false? (= 4 5))\n             :a\n             :b))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-0",
-  :id 768}
+  :id 771}
  {:description "Some of them leave you no alternative",
-  :tests ["(= __ (if (> 4 3) []))"],
+  :tests ["(= __ (if (> 4 3)\n             []))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-1",
-  :id 769}
+  :id 772}
  {:description "And in such a situation you may have nothing",
-  :tests ["(= __ (if (nil? 0) [:a :b :c]))"],
+  :tests ["(= __ (if (nil? 0)\n             [:a :b :c]))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-2",
-  :id 770}
+  :id 773}
  {:description "In others your alternative may be interesting",
-  :tests ["(= :glory (if (not (empty? ())) :doom __))"],
+  :tests
+  ["(= :glory (if (not (empty? ()))\n                :doom\n                __))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-3",
-  :id 771}
+  :id 774}
  {:description "You may have a multitude of possible paths",
   :tests
-  ["(let [x 5] (= :your-road (cond (= x __) :road-not-taken (= x __) :another-road-not-taken :else __)))"],
+  ["(let [x 5]\n      (= :your-road (cond (= x __) :road-not-taken\n                          (= x __) :another-road-not-taken\n                          :else __)))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-4",
-  :id 772}
+  :id 775}
  {:description "Or your fate may be sealed",
-  :tests ["(= __ (if-not (zero? __) (quote doom) (quote doom)))"],
+  :tests
+  ["(= __ (if-not (zero? __)\n             'doom\n             'doom))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-5",
-  :id 773}
+  :id 776}
  {:description "In case of emergency, sound the alarms",
-  :tests ["(= :sirens (explain-defcon-level __))"],
+  :tests
+  ["(let [explain-defcon-level (fn [exercise-term]\n                                 (case exercise-term\n                                   :fade-out          :you-and-what-army\n                                   :double-take       :call-me-when-its-important\n                                   :round-house       :o-rly\n                                   :fast-pace         :thats-pretty-bad\n                                   :cocked-pistol     :sirens\n                                   :say-what?))]\n      (= :sirens\n         (explain-defcon-level __)))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-6",
-  :id 774}
+  :id 777}
  {:description "But admit it when you don't know what to do",
-  :tests ["(= __ (explain-defcon-level :yo-mama))"],
+  :tests
+  ["(let [explain-defcon-level (fn [exercise-term]\n                                 (case exercise-term\n                                   :fade-out          :you-and-what-army\n                                   :double-take       :call-me-when-its-important\n                                   :round-house       :o-rly\n                                   :fast-pace         :thats-pretty-bad\n                                   :cocked-pistol     :sirens\n                                   :say-what?))]\n      (= __\n         (explain-defcon-level :yo-mama)))"],
   :difficulty "Basic",
   :tags ["conditionals"],
   :title "conditionals-7",
-  :id 775}
- {:description "The map function relates a sequence to another",
-  :tests ["(= (quote (__)) (map (fn [x] (* 4 x)) [1 2 3]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-0",
-  :id 776}
- {:description "You may create that mapping",
-  :tests ["(= (quote (1 4 9 16 25)) (map (fn [x] __) [1 2 3 4 5]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-1",
-  :id 777}
- {:description "Or use the names of existing functions",
-  :tests ["(= __ (map nil? [:a :b nil :c :d]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-2",
   :id 778}
- {:description "A filter can be strong",
-  :tests
-  ["(= __ (filter (fn [x] false) (quote (:anything :goes :here))))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-3",
-  :id 779}
- {:description "Or very weak",
-  :tests
-  ["(= __ (filter (fn [x] true) (quote (:anything :goes :here))))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-4",
-  :id 780}
- {:description "Or somewhere in between",
-  :tests
-  ["(= [10 20 30] (filter (fn [x] __) [10 20 30 40 50 60 70 80]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-5",
-  :id 781}
- {:description "Maps and filters may be combined",
-  :tests
-  ["(= [10 20 30] (map (fn [x] __) (filter (fn [x] __) [1 2 3 4 5 6 7 8])))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-6",
-  :id 782}
- {:description "Reducing can increase the result",
-  :tests ["(= __ (reduce (fn [a b] (* a b)) [1 2 3 4]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-7",
-  :id 783}
- {:description "You can start somewhere else",
-  :tests ["(= 2400 (reduce (fn [a b] (* a b)) __ [1 2 3 4]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-8",
-  :id 784}
- {:description "Numbers are not the only things one can reduce",
-  :tests
-  ["(= \"longest\" (reduce (fn [a b] (if (< __) b a)) [\"which\" \"is\" \"the\" \"longest\" \"word\"]))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-9",
-  :id 785}
- {:description
-  "Some functions can be used in different ways - with no arguments",
-  :tests ["(= __ (hello))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-0",
-  :id 786}
- {:description "With one argument",
-  :tests ["(= __ (hello \"world\"))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-1",
-  :id 787}
- {:description "Or with many arguments",
-  :tests ["(= __ (hello \"Peter\" \"Paul\" \"Mary\"))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-2",
-  :id 788}
- {:description "Multimethods allow more complex dispatching",
-  :tests
-  ["(= \"Bambi eats veggies.\" (diet {:species \"deer\", :name \"Bambi\", :age 1, :eater :herbivore}))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-3",
-  :id 789}
- {:description
-  "Different methods are used depending on the dispatch function result",
-  :tests
-  ["(= \"Simba eats animals.\" (diet {:species \"lion\", :name \"Simba\", :age 1, :eater :carnivore}))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-4",
-  :id 790}
- {:description "You may use a default method when no others match",
-  :tests
-  ["(= \"I don't know what Rich Hickey eats.\" (diet {:name \"Rich Hickey\"}))"],
-  :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-5",
-  :id 791}
- {:description "There are many ways to generate a sequence",
-  :tests ["(= __ (range 1 5))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-0",
-  :id 792}
- {:description "The range starts at the beginning by default",
-  :tests ["(= __ (range 5))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-1",
-  :id 793}
- {:description "Only take what you need when the sequence is large",
-  :tests ["(= [0 1 2 3 4 5 6 7 8 9] (take __ (range 100)))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-2",
-  :id 794}
- {:description "Or limit results by dropping what you don't need",
-  :tests ["(= [95 96 97 98 99] (drop __ (range 100)))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-3",
-  :id 795}
- {:description "Iteration provides an infinite lazy sequence",
-  :tests ["(= __ (take 20 (iterate inc 0)))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-4",
-  :id 796}
- {:description "Repetition is key",
-  :tests ["(= [:a :a :a :a :a :a :a :a :a :a] (repeat 10 __))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-5",
-  :id 797}
- {:description "Iteration can be used for repetition",
-  :tests ["(= (repeat 100 :foo) (take 100 (iterate __ :foo)))"],
-  :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-6",
-  :id 798}
- {:description
-  "Sequence comprehensions can bind each element in turn to a symbol",
-  :tests ["(= __ (for [index (range 6)] index))"],
-  :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-0",
-  :id 799}
- {:description "They can easily emulate mapping",
-  :tests
-  ["(= (quote (0 1 4 9 16 25)) (map (fn [index] (* index index)) (range 6)) (for [index (range 6)] __))"],
-  :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-1",
-  :id 800}
- {:description "And also filtering",
-  :tests
-  ["(= (quote (1 3 5 7 9)) (filter odd? (range 10)) (for [index __ :when (odd? index)] index))"],
-  :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-2",
-  :id 801}
- {:description "Combinations of these transformations is trivial",
-  :tests
-  ["(= (quote (1 9 25 49 81)) (map (fn [index] (* index index)) (filter odd? (range 10))) (for [index (range 10) :when __] __))"],
-  :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-3",
-  :id 802}
- {:description
-  "More complex transformations simply take multiple binding forms",
-  :tests
-  ["(= [[:top :left] [:top :middle] [:top :right] [:middle :left] [:middle :middle] [:middle :right] [:bottom :left] [:bottom :middle] [:bottom :right]] (for [row [:top :middle :bottom] column [:left :middle :right]] __))"],
-  :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-4",
-  :id 803}
- {:description
-  "One may know what they seek by knowing what they do not seek",
-  :tests
-  ["(= [__] (let [not-a-symbol? (complement symbol?)] (map not-a-symbol? [:a (quote b) \"c\"])))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-0",
-  :id 804}
- {:description
-  "Praise and 'complement' may help you separate the wheat from the chaff",
-  :tests
-  ["(= [:wheat \"wheat\" (quote wheat)] (let [not-nil? __] (filter not-nil? [nil :wheat nil \"wheat\" nil (quote wheat) nil])))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-1",
-  :id 805}
- {:description "Partial functions allow procrastination",
-  :tests ["(= 20 (let [multiply-by-5 (partial * 5)] (__)))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-2",
-  :id 806}
- {:description "Don't forget: first things first",
-  :tests
-  ["(= [__] (let [ab-adder (partial concat [:a :b])] (ab-adder [__])))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-3",
-  :id 807}
- {:description "Functions can join forces as one 'composed' function",
-  :tests
-  ["(= 25 (let [inc-and-square (comp square inc)] (inc-and-square __)))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-4",
-  :id 808}
- {:description "Have a go on a double dec-er",
-  :tests ["(= __ (let [double-dec (comp dec dec)] (double-dec 10)))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-5",
-  :id 809}
- {:description
-  "Be careful about the order in which you mix your functions",
-  :tests ["(= 99 (let [square-and-dec __] (square-and-dec 10)))"],
-  :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-6",
-  :id 810}
- {:description "Destructuring is an arbiter: it breaks up arguments",
-  :tests ["(= __ ((fn [[a b]] (str b a)) [:foo :bar]))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-0",
-  :id 811}
- {:description "Whether in function definitions",
-  :tests
-  ["(= (str \"First comes love, \" \"then comes marriage, \" \"then comes Clojure with the baby carriage\") ((fn [[a b c]] __) [\"love\" \"marriage\" \"Clojure\"]))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-1",
-  :id 812}
- {:description "Or in let expressions",
-  :tests
-  ["(= \"Rich Hickey aka The Clojurer aka Go Time aka Macro Killah\" (let [[first-name last-name & aliases] (list \"Rich\" \"Hickey\" \"The Clojurer\" \"Go Time\" \"Macro Killah\")] __))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-2",
-  :id 813}
- {:description "You can regain the full argument if you like arguing",
-  :tests
-  ["(= {:original-parts [\"Stephen\" \"Hawking\"], :named-parts {:first \"Stephen\", :last \"Hawking\"}} (let [[first-name last-name :as full-name] [\"Stephen\" \"Hawking\"]] __))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-3",
-  :id 814}
- {:description "Break up maps by key",
-  :tests
-  ["(= \"123 Test Lane, Testerville, TX\" (let [{street-address :street-address, city :city, state :state} test-address] __))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-4",
-  :id 815}
- {:description "Or more succinctly",
-  :tests
-  ["(= \"123 Test Lane, Testerville, TX\" (let [{:keys [street-address __]} test-address] __))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-5",
-  :id 816}
- {:description "All together now!",
-  :tests
-  ["(= \"Test Testerson, 123 Test Lane, Testerville, TX\" (__ [\"Test\" \"Testerson\"] test-address))"],
-  :difficulty "Basic",
-  :tags ["destructuring"],
-  :title "destructuring-6",
-  :id 817}
- {:description "Atoms are references to values",
-  :tests ["(= __ (deref atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-0",
-  :id 818}
- {:description "You can get its value more succintly",
-  :tests ["(= __ @atomic-clock)"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-1",
-  :id 819}
- {:description "You can even change at the swap meet",
-  :tests
-  ["(= __ (do\n          (swap! atomic-clock inc)\n          @atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-2",
-  :id 820}
- {:description
-  "Keep taxes out of this: swapping requires no transaction",
-  :tests ["(= 5 (do\n         __\n         @atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-3",
-  :id 821}
- {:description "Any number of arguments might happen during a swap",
-  :tests
-  ["(= __ (do\n          (swap! atomic-clock + 1 2 3 4 5)\n          @atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-4",
-  :id 822}
- {:description "Atomic atoms are atomic",
-  :tests
-  ["(= __ (do\n          (compare-and-set! atomic-clock 100 :fin)\n          @atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-5",
-  :id 823}
- {:description
-  "When your expectations are aligned with reality things, proceed that way",
-  :tests
-  ["(= :fin (do\n            (compare-and-set! __)\n            @atomic-clock))"],
-  :difficulty "Basic",
-  :tags ["atoms"],
-  :title "atoms-6",
-  :id 824}
- {:description "In the beginning, there was a word",
-  :tests ["(= __ (deref the-world))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-0",
-  :id 825}
- {:description
-  "You can get the word more succinctly, but it's the same",
-  :tests ["(= __ (clojure.core/deref the-world))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-1",
-  :id 826}
- {:description "You can be the change you wish to see in the world.",
-  :tests
-  ["(= __ (do (dosync (ref-set the-world \"better\")) (clojure.core/deref the-world)))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-2",
-  :id 827}
- {:description "Alter where you need not replace",
-  :tests
-  ["(= __ (let [exclamator (fn [x] (str x \"!\"))] (dosync (alter the-world exclamator) (alter the-world exclamator) (alter the-world exclamator)) (clojure.core/deref the-world)))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-3",
-  :id 828}
- {:description "Don't forget to do your work in a transaction!",
-  :tests ["(= 0 (do __ (clojure.core/deref the-world)))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-4",
-  :id 829}
- {:description
-  "Functions passed to alter may depend on the data in the ref",
-  :tests ["(= 20 (do (dosync (alter the-world ___))))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-5",
-  :id 830}
- {:description "Two worlds are better than one",
-  :tests
-  ["(= [\"Real Jerry\" \"Bizarro Jerry\"] (do (dosync (ref-set the-world {}) (alter the-world assoc :jerry \"Real Jerry\") (alter bizarro-world assoc :jerry \"Bizarro Jerry\") __)))"],
-  :difficulty "Basic",
-  :tags ["refs"],
-  :title "refs-6",
-  :id 831}
- {:description
-  "Holding records is meaningful only when the record is worthy of you",
-  :tests ["(= __ (:prize (Nobel. \"peace\")))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-0",
-  :id 832}
- {:description "Types are quite similar",
-  :tests ["(= __ (.prize (Pulitzer. \"literature\")))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-1",
-  :id 833}
- {:description "Records may be treated like maps",
-  :tests ["(= __ (:prize (Nobel. \"physics\")))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-2",
-  :id 834}
- {:description "While types may not",
-  :tests ["(= __ (:prize (Pulitzer. \"poetry\")))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-3",
-  :id 835}
- {:description "Further study reveals why",
-  :tests
-  ["(= __ (map map? [(Nobel. \"chemistry\") (Pulitzer. \"music\")]))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-4",
-  :id 836}
- {:description
-  "Either sort of datatype can define methods in a protocol",
-  :tests
-  ["(= __ (with-out-str (present (Oscar. \"Best Picture\") \"Evil Alien Conquerors\")))"],
-  :difficulty "Basic",
-  :tags ["datatypes"],
-  :title "datatypes-5",
-  :id 837}
  {:description
   "To split a collection you can use the partition function",
   :tests ["(= '((0 1) (2 3)) (__ 2 (range 4)))"],
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-0",
-  :id 838}
+  :id 779}
  {:description
   "But watch out if there are not enough elements to form n sequences",
   :tests ["(= (quote (__)) (partition 3 [:a :b :c :d :e]))"],
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-1",
-  :id 839}
+  :id 780}
  {:description
   "You can use partition-all to also get partitions with less than n elements",
   :tests ["(= __ (partition-all 3 (range 5)))"],
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-2",
-  :id 840}
+  :id 781}
  {:description
   "If you need to, you can start each sequence with an offset",
   :tests
@@ -849,7 +457,7 @@
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-3",
-  :id 841}
+  :id 782}
  {:description
   "Consider padding the last sequence with some default values..",
   :tests
@@ -857,7 +465,7 @@
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-4",
-  :id 842}
+  :id 783}
  {:description
   ".. but notice that they will only pad up to given sequence length",
   :tests
@@ -865,4 +473,372 @@
   :difficulty "Basic",
   :tags ["partition"],
   :title "partition-5",
-  :id 843}]
+  :id 784}
+ {:description "The map function relates a sequence to another",
+  :tests ["(= (quote (__)) (map (fn [x] (* 4 x)) [1 2 3]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-0",
+  :id 785}
+ {:description "You may create that mapping",
+  :tests ["(= (quote (1 4 9 16 25)) (map (fn [x] __) [1 2 3 4 5]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-1",
+  :id 786}
+ {:description "Or use the names of existing functions",
+  :tests ["(= __ (map nil? [:a :b nil :c :d]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-2",
+  :id 787}
+ {:description "A filter can be strong",
+  :tests
+  ["(= __ (filter (fn [x] false) (quote (:anything :goes :here))))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-3",
+  :id 788}
+ {:description "Or very weak",
+  :tests
+  ["(= __ (filter (fn [x] true) (quote (:anything :goes :here))))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-4",
+  :id 789}
+ {:description "Or somewhere in between",
+  :tests
+  ["(= [10 20 30] (filter (fn [x] __) [10 20 30 40 50 60 70 80]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-5",
+  :id 790}
+ {:description "Maps and filters may be combined",
+  :tests
+  ["(= [10 20 30] (map (fn [x] __) (filter (fn [x] __) [1 2 3 4 5 6 7 8])))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-6",
+  :id 791}
+ {:description "Reducing can increase the result",
+  :tests ["(= __ (reduce (fn [a b] (* a b)) [1 2 3 4]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-7",
+  :id 792}
+ {:description "You can start somewhere else",
+  :tests ["(= 2400 (reduce (fn [a b] (* a b)) __ [1 2 3 4]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-8",
+  :id 793}
+ {:description "Numbers are not the only things one can reduce",
+  :tests
+  ["(= \"longest\" (reduce (fn [a b]\n                           (if (< __) b a))\n                         [\"which\" \"is\" \"the\" \"longest\" \"word\"]))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-9",
+  :id 794}
+ {:description
+  "Some functions can be used in different ways - with no arguments",
+  :tests
+  ["(let [hello (fn ([] \"Hello World!\"))]\n      (= __ (hello)))"],
+  :difficulty "Basic",
+  :tags ["polymorphism"],
+  :title "polymorphism-0",
+  :id 795}
+ {:description "With one argument",
+  :tests
+  ["(let [hello (fn\n                  ([] \"Hello World!\")\n                  ([a] (str \"Hello, you silly \" a \".\")))]\n      (= __ (hello \"world\")))"],
+  :difficulty "Basic",
+  :tags ["polymorphism"],
+  :title "polymorphism-1",
+  :id 796}
+ {:description "Or with many arguments",
+  :tests
+  ["(let [hello (fn\n                  ([] \"Hello World!\")\n                  ([a] (str \"Hello, you silly \" a \".\"))\n                  ([a & more] (str \"Hello to this group: \"\n                                   (apply str\n                                          (interpose \", \" (concat (list a) more)))\n                                   \"!\")))]\n      (= __\n         (hello \"Peter\" \"Paul\" \"Mary\")))"],
+  :difficulty "Basic",
+  :tags ["polymorphism"],
+  :title "polymorphism-2",
+  :id 797}
+ {:description "There are many ways to generate a sequence",
+  :tests ["(= __ (range 1 5))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-0",
+  :id 798}
+ {:description "The range starts at the beginning by default",
+  :tests ["(= __ (range 5))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-1",
+  :id 799}
+ {:description "Only take what you need when the sequence is large",
+  :tests ["(= [0 1 2 3 4 5 6 7 8 9]\n       (take __ (range 100)))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-2",
+  :id 800}
+ {:description "Or limit results by dropping what you don't need",
+  :tests ["(= [95 96 97 98 99]\n       (drop __ (range 100)))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-3",
+  :id 801}
+ {:description "Iteration provides an infinite lazy sequence",
+  :tests ["(= __ (take 20 (iterate inc 0)))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-4",
+  :id 802}
+ {:description "Repetition is key",
+  :tests
+  ["(= [:a :a :a :a :a :a :a :a :a :a ]\n       (repeat 10 __))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-5",
+  :id 803}
+ {:description "Iteration can be used for repetition",
+  :tests
+  ["(= (repeat 100 :foo)\n       (take 100 (iterate __ :foo)))"],
+  :difficulty "Basic",
+  :tags ["sequences"],
+  :title "sequences-6",
+  :id 804}
+ {:description
+  "Sequence comprehensions can bind each element in turn to a symbol",
+  :tests ["(= __ (for [index (range 6)] index))"],
+  :difficulty "Basic",
+  :tags ["comprehensions"],
+  :title "comprehensions-0",
+  :id 805}
+ {:description "They can easily emulate mapping",
+  :tests
+  ["(= (quote (0 1 4 9 16 25)) (map (fn [index] (* index index)) (range 6)) (for [index (range 6)] __))"],
+  :difficulty "Basic",
+  :tags ["comprehensions"],
+  :title "comprehensions-1",
+  :id 806}
+ {:description "And also filtering",
+  :tests
+  ["(= (quote (1 3 5 7 9)) (filter odd? (range 10)) (for [index __ :when (odd? index)] index))"],
+  :difficulty "Basic",
+  :tags ["comprehensions"],
+  :title "comprehensions-2",
+  :id 807}
+ {:description "Combinations of these transformations is trivial",
+  :tests
+  ["(= (quote (1 9 25 49 81)) (map (fn [index] (* index index)) (filter odd? (range 10))) (for [index (range 10) :when __] __))"],
+  :difficulty "Basic",
+  :tags ["comprehensions"],
+  :title "comprehensions-3",
+  :id 808}
+ {:description
+  "More complex transformations simply take multiple binding forms",
+  :tests
+  ["(= [[:top :left] [:top :middle] [:top :right] [:middle :left] [:middle :middle] [:middle :right] [:bottom :left] [:bottom :middle] [:bottom :right]] (for [row [:top :middle :bottom] column [:left :middle :right]] __))"],
+  :difficulty "Basic",
+  :tags ["comprehensions"],
+  :title "comprehensions-4",
+  :id 809}
+ {:description
+  "One may know what they seek by knowing what they do not seek",
+  :tests
+  ["(= [__] (let [not-a-symbol? (complement symbol?)]\n               (map not-a-symbol? [:a 'b \"c\"])))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-0",
+  :id 810}
+ {:description
+  "Praise and 'complement' may help you separate the wheat from the chaff",
+  :tests
+  ["(= [:wheat \"wheat\" 'wheat]\n       (let [not-nil? __]\n         (filter not-nil? [nil :wheat nil \"wheat\" nil 'wheat nil])))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-1",
+  :id 811}
+ {:description "Partial functions allow procrastination",
+  :tests
+  ["(= 20 (let [multiply-by-5 (partial * 5)]\n            (__)))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-2",
+  :id 812}
+ {:description "Don't forget: first things first",
+  :tests
+  ["(= [__]\n       (let [ab-adder (partial concat [:a :b])]\n         (ab-adder [__])))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-3",
+  :id 813}
+ {:description "Functions can join forces as one 'composed' function",
+  :tests
+  ["(= 25 (let [square (fn [x] (* x x))\n                inc-and-square (comp square inc)]\n            (inc-and-square __)))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-4",
+  :id 814}
+ {:description "Have a go on a double dec-er",
+  :tests
+  ["(= __ (let [double-dec (comp dec dec)]\n             (double-dec 10)))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-5",
+  :id 815}
+ {:description
+  "Be careful about the order in which you mix your functions",
+  :tests
+  ["(= 99 (let [square-and-dec __]\n            (square-and-dec 10)))"],
+  :difficulty "Basic",
+  :tags ["functions"],
+  :title "functions-6",
+  :id 816}
+ {:description "Destructuring is an arbiter: it breaks up arguments",
+  :tests ["(= __ ((fn [[a b]] (str b a))\n            [:foo :bar]))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-0",
+  :id 817}
+ {:description "Whether in function definitions",
+  :tests
+  ["(= (str \"First comes love, \"\n            \"then comes marriage, \"\n            \"then comes Clojure with the baby carriage\")\n       ((fn [[a b c]] __)\n        [\"love\" \"marriage\" \"Clojure\"]))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-1",
+  :id 818}
+ {:description "Or in let expressions",
+  :tests
+  ["(= \"Rich Hickey aka The Clojurer aka Go Time aka Macro Killah\"\n       (let [[first-name last-name & aliases]\n             (list \"Rich\" \"Hickey\" \"The Clojurer\" \"Go Time\" \"Macro Killah\")]\n         __))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-2",
+  :id 819}
+ {:description "You can regain the full argument if you like arguing",
+  :tests
+  ["(= {:original-parts [\"Stephen\" \"Hawking\"] :named-parts {:first \"Stephen\" :last \"Hawking\"}}\n       (let [[first-name last-name :as full-name] [\"Stephen\" \"Hawking\"]]\n         __))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-3",
+  :id 820}
+ {:description "Break up maps by key",
+  :tests
+  ["(= \"123 Test Lane, Testerville, TX\"\n     (let [test-address {:street-address \"123 Test Lane\"\n                         :city \"Testerville\"\n                         :state \"TX\"}\n           {street-address :street-address, city :city, state :state} test-address]\n       __))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-4",
+  :id 821}
+ {:description "Or more succinctly",
+  :tests
+  ["(= \"123 Test Lane, Testerville, TX\"\n       (let [test-address {:street-address \"123 Test Lane\"\n                           :city \"Testerville\"\n                           :state \"TX\"}\n             {:keys [street-address __]} test-address]\n         __))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-5",
+  :id 822}
+ {:description "All together now!",
+  :tests
+  ["(= \"Test Testerson, 123 Test Lane, Testerville, TX\"\n       (let [test-address {:street-address \"123 Test Lane\"\n                           :city \"Testerville\"\n                           :state \"TX\"}]\n         (__ [\"Test\" \"Testerson\"] test-address)))"],
+  :difficulty "Basic",
+  :tags ["destructuring"],
+  :title "destructuring-6",
+  :id 823}
+ {:description "Atoms are references to values",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= __ (deref atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-0",
+  :id 824}
+ {:description "You can get its value more succintly",
+  :tests ["(let [atomic-clock (atom 0)]\n      (= __ @atomic-clock))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-1",
+  :id 825}
+ {:description "You can even change at the swap meet",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= __ (do\n               (swap! atomic-clock inc)\n               @atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-2",
+  :id 826}
+ {:description
+  "Keep taxes out of this: swapping requires no transaction",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= 5 (do\n             __\n             @atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-3",
+  :id 827}
+ {:description "Any number of arguments might happen during a swap",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= __ (do\n               (swap! atomic-clock + 1 2 3 4 5)\n               @atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-4",
+  :id 828}
+ {:description "Atomic atoms are atomic",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= __ (do\n               (compare-and-set! atomic-clock 100 :fin)\n               @atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-5",
+  :id 829}
+ {:description
+  "When your expectations are aligned with reality things, proceed that way",
+  :tests
+  ["(let [atomic-clock (atom 0)]\n      (= :fin (do\n                (compare-and-set! __)\n                @atomic-clock)))"],
+  :difficulty "Basic",
+  :tags ["atoms"],
+  :title "atoms-6",
+  :id 830}
+ {:description "In the beginning, there was a word",
+  :tests
+  ["(let [the-world (ref \"hello\")]\n      (= __ (deref the-world)))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-0",
+  :id 831}
+ {:description
+  "You can get the word more succinctly, but it's the same",
+  :tests
+  ["(let [the-world (ref \"hello\")]\n      (= __ @the-world))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-1",
+  :id 832}
+ {:description "You can be the change you wish to see in the world.",
+  :tests
+  ["(let [the-world (ref \"hello\")]\n      (= __ (do\n               (dosync (ref-set the-world \"better\"))\n               @the-world)))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-2",
+  :id 833}
+ {:description "Alter where you need not replace",
+  :tests
+  ["(= __ (let [the-world  (ref \"hello\")\n                 exclamator (fn [x] (str x \"!\"))]\n             (dosync\n              (alter the-world exclamator)\n              (alter the-world exclamator)\n              (alter the-world exclamator))\n             @the-world))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-3",
+  :id 834}
+ {:description "Don't forget to do your work in a transaction!",
+  :tests
+  ["(let [the-world (ref \"hello\")]\n      (= 0 (do __\n               @the-world)))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-4",
+  :id 835}
+ {:description
+  "Functions passed to alter may depend on the data in the ref",
+  :tests
+  ["(let [the-world (ref \"hello\")]\n      (= 20 (do\n              (dosync (alter the-world ___)))))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-5",
+  :id 836}
+ {:description "Two worlds are better than one",
+  :tests
+  ["(let [the-world     (ref \"hello\")\n          bizarro-world (ref {})]\n      (= [\"Real Jerry\" \"Bizarro Jerry\"]\n         (do\n           (dosync\n            (ref-set the-world {})\n            (alter the-world assoc :jerry \"Real Jerry\")\n            (alter bizarro-world assoc :jerry \"Bizarro Jerry\")\n            __))))"],
+  :difficulty "Basic",
+  :tags ["refs"],
+  :title "refs-6",
+  :id 837}]
