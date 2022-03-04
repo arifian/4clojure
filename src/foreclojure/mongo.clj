@@ -1,5 +1,6 @@
 (ns foreclojure.mongo
-  (:require [foreclojure.data-set-oxal :as d-oxal])
+  (:require [foreclojure.data-set-oxal :as d-oxal]
+            [foreclojure.data-set-koans :as koans])
   (:use somnium.congomongo
         [somnium.congomongo.config :refer [*mongo-config*]]
         [foreclojure.data-set :only [load-problems]]
@@ -42,6 +43,9 @@
     (do (d-oxal/insert-init-seq)
         (d-oxal/load-problems-2)))
   (add-index! :problems [:solved]))
+
+(defn prepare-koans-problems []
+  (koans/load-problems-2))
 
 (defn prepare-seqs []
   (update! :seqs
@@ -91,6 +95,12 @@
   (prepare-seqs)
   (prepare-users)
   (prepare-solutions)
+  (reconcile-solved-count))
+
+(defn add-koans-problems []
+  (connect-to-db)
+  (prepare-koans-problems)
+  (prepare-seqs)
   (reconcile-solved-count))
 
 (comment
