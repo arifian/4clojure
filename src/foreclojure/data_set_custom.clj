@@ -1,12 +1,12 @@
-(ns foreclojure.data-set-koans
-  (:require [clojure.set])
-  (:use [somnium.congomongo]))
+(ns foreclojure.data-set-custom
+    (:require [clojure.set])
+    (:use [somnium.congomongo]))
 
-(def problems
-  (read-string (slurp "resources/koans.edn")))
+(defn problems [problem-edn-path]
+  (read-string (slurp problem-edn-path)))
 
-(defn load-problems []
-  (for [problem problems]
+(defn load-problems [problem-edn-path]
+  (for [problem (problems problem-edn-path)]
     (let [problem-adjusted-keys (-> problem
                                     (clojure.set/rename-keys {:id :_id})
                                     (assoc :times-solved 0 :approved true))]
@@ -17,10 +17,10 @@
 ;;            {:_id "problems"
 ;;             :seq 151}))
 
-(defn load-problems-2 []
+(defn load-problems-2 [problem-edn-path]
   (dorun (mass-insert!
           :problems
-          (for [problem problems]
+          (for [problem (problems problem-edn-path)]
             (-> problem
                 (clojure.set/rename-keys {:id :_id})
                 (assoc :times-solved 0 :approved true))))))

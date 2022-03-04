@@ -212,7 +212,7 @@
         [:div {:style "clear: right; margin-bottom: 10px;"} "&nbsp;"])
       [:hr]
       [:table
-       (for [difficulty ["Elementary" "Easy" "Medium" "Hard"]]
+       (for [difficulty ["Basic" "Elementary" "Easy" "Medium" "Hard"]]
          (let [solved (count (get-solved username difficulty))
                total  (count (get-problems difficulty))]
            [:tr

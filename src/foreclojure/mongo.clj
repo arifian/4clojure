@@ -1,6 +1,7 @@
 (ns foreclojure.mongo
-  (:require [foreclojure.data-set-oxal :as d-oxal]
-            [foreclojure.data-set-koans :as koans])
+  (:require [foreclojure.data-set-oxal :as dset-oxal]
+            ;; [foreclojure.data-set-koans :as dset-koans]
+            [foreclojure.data-set-custom :as dset-custom])
   (:use somnium.congomongo
         [somnium.congomongo.config :refer [*mongo-config*]]
         [foreclojure.data-set :only [load-problems]]
@@ -40,12 +41,12 @@
 
 (defn prepare-problems []
   (when-not (fetch-one :problems)
-    (do (d-oxal/insert-init-seq)
-        (d-oxal/load-problems-2)))
+    (do (dset-oxal/insert-init-seq)
+        (dset-oxal/load-problems-2)))
   (add-index! :problems [:solved]))
 
-(defn prepare-koans-problems []
-  (koans/load-problems-2))
+;; (defn prepare-koans-problems []
+;;   (dset-koans/load-problems-2))
 
 (defn prepare-seqs []
   (update! :seqs
@@ -97,9 +98,15 @@
   (prepare-solutions)
   (reconcile-solved-count))
 
-(defn add-koans-problems []
+;; (defn add-koans-problems []
+;;   (connect-to-db)
+;;   (prepare-koans-problems)
+;;   (prepare-seqs)
+;;   (reconcile-solved-count))
+
+(defn add-additional-problems [problem-edn-path]
   (connect-to-db)
-  (prepare-koans-problems)
+  (dset-custom/load-problems-2 problem-edn-path)
   (prepare-seqs)
   (reconcile-solved-count))
 
