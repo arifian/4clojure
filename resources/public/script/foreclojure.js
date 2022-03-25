@@ -69,11 +69,12 @@ $(document).ready(function() {
 });
 
 var difficulty = {
-    "Elementary": 0,
-    "Easy": 1,
-    "Medium": 2,
-    "Hard": 3,
-    "": 4
+    "Basic": 0,
+    "Elementary": 1,
+    "Easy": 2,
+    "Medium": 3,
+    "Hard": 4,
+    "": 5
 };
 
 // dataTable will call this function in preparation for sorting a column.
@@ -127,7 +128,7 @@ jQuery.fn.dataTableExt.afnSortData['following'] = function(oSettings, iColumn)
 function configureDataTables(){
 
     $('#problem-table').dataTable( {
-        "iDisplayLength": 100,
+        "iDisplayLength": 300,
         "aaSorting": [[5, "desc"], [1, "asc"], [4, "desc"]],
 	"aoColumns": [
             {"sSortDataType": "title", "sType": "string"},
@@ -151,7 +152,7 @@ function configureDataTables(){
     } );
 
     $('#user-table').dataTable( {
-        "iDisplayLength":100,
+        "iDisplayLength":300,
         "aaSorting": [[0, "asc"]],
         "aoColumns": [
             {"sType": "numeric"},

@@ -477,221 +477,221 @@
  {:description "The map function relates a sequence to another",
   :tests ["(= (quote (__)) (map (fn [x] (* 4 x)) [1 2 3]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-0",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-0",
   :id 270}
  {:description "You may create that mapping",
   :tests ["(= (quote (1 4 9 16 25)) (map (fn [x] __) [1 2 3 4 5]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-1",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-1",
   :id 271}
  {:description "Or use the names of existing functions",
   :tests ["(= __ (map nil? [:a :b nil :c :d]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-2",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-2",
   :id 272}
  {:description "A filter can be strong",
   :tests
   ["(= __ (filter (fn [x] false) (quote (:anything :goes :here))))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-3",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-3",
   :id 273}
  {:description "Or very weak",
   :tests
   ["(= __ (filter (fn [x] true) (quote (:anything :goes :here))))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-4",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-4",
   :id 274}
  {:description "Or somewhere in between",
   :tests
   ["(= [10 20 30] (filter (fn [x] __) [10 20 30 40 50 60 70 80]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-5",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-5",
   :id 275}
  {:description "Maps and filters may be combined",
   :tests
   ["(= [10 20 30] (map (fn [x] __) (filter (fn [x] __) [1 2 3 4 5 6 7 8])))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-6",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-6",
   :id 276}
  {:description "Reducing can increase the result",
   :tests ["(= __ (reduce (fn [a b] (* a b)) [1 2 3 4]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-7",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-7",
   :id 277}
  {:description "You can start somewhere else",
   :tests ["(= 2400 (reduce (fn [a b] (* a b)) __ [1 2 3 4]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-8",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-8",
   :id 278}
  {:description "Numbers are not the only things one can reduce",
   :tests
   ["(= \"longest\" (reduce (fn [a b]\n                           (if (< __) b a))\n                         [\"which\" \"is\" \"the\" \"longest\" \"word\"]))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-9",
+  :tags ["higher-order-functions"],
+  :title "higher-order-functions-9",
   :id 279}
  {:description
   "Some functions can be used in different ways - with no arguments",
   :tests
   ["(let [hello (fn ([] \"Hello World!\"))]\n      (= __ (hello)))"],
   :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-0",
+  :tags ["runtime-polymorphism"],
+  :title "runtime-polymorphism-0",
   :id 280}
  {:description "With one argument",
   :tests
   ["(let [hello (fn\n                  ([] \"Hello World!\")\n                  ([a] (str \"Hello, you silly \" a \".\")))]\n      (= __ (hello \"world\")))"],
   :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-1",
+  :tags ["runtime-polymorphism"],
+  :title "runtime-polymorphism-1",
   :id 281}
  {:description "Or with many arguments",
   :tests
   ["(let [hello (fn\n                  ([] \"Hello World!\")\n                  ([a] (str \"Hello, you silly \" a \".\"))\n                  ([a & more] (str \"Hello to this group: \"\n                                   (apply str\n                                          (interpose \", \" (concat (list a) more)))\n                                   \"!\")))]\n      (= __\n         (hello \"Peter\" \"Paul\" \"Mary\")))"],
   :difficulty "Basic",
-  :tags ["polymorphism"],
-  :title "polymorphism-2",
+  :tags ["runtime-polymorphism"],
+  :title "runtime-polymorphism-2",
   :id 282}
  {:description "There are many ways to generate a sequence",
   :tests ["(= __ (range 1 5))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-0",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-0",
   :id 283}
  {:description "The range starts at the beginning by default",
   :tests ["(= __ (range 5))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-1",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-1",
   :id 284}
  {:description "Only take what you need when the sequence is large",
   :tests ["(= [0 1 2 3 4 5 6 7 8 9]\n       (take __ (range 100)))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-2",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-2",
   :id 285}
  {:description "Or limit results by dropping what you don't need",
   :tests ["(= [95 96 97 98 99]\n       (drop __ (range 100)))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-3",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-3",
   :id 286}
  {:description "Iteration provides an infinite lazy sequence",
   :tests ["(= __ (take 20 (iterate inc 0)))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-4",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-4",
   :id 287}
  {:description "Repetition is key",
   :tests
   ["(= [:a :a :a :a :a :a :a :a :a :a ]\n       (repeat 10 __))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-5",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-5",
   :id 288}
  {:description "Iteration can be used for repetition",
   :tests
   ["(= (repeat 100 :foo)\n       (take 100 (iterate __ :foo)))"],
   :difficulty "Basic",
-  :tags ["sequences"],
-  :title "sequences-6",
+  :tags ["lazy-sequences"],
+  :title "lazy-sequences-6",
   :id 289}
  {:description
   "Sequence comprehensions can bind each element in turn to a symbol",
   :tests ["(= __ (for [index (range 6)] index))"],
   :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-0",
+  :tags ["sequence-comprehensions"],
+  :title "sequence-comprehensions-0",
   :id 290}
  {:description "They can easily emulate mapping",
   :tests
   ["(= (quote (0 1 4 9 16 25)) (map (fn [index] (* index index)) (range 6)) (for [index (range 6)] __))"],
   :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-1",
+  :tags ["sequence-comprehensions"],
+  :title "sequence-comprehensions-1",
   :id 291}
  {:description "And also filtering",
   :tests
   ["(= (quote (1 3 5 7 9)) (filter odd? (range 10)) (for [index __ :when (odd? index)] index))"],
   :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-2",
+  :tags ["sequence-comprehensions"],
+  :title "sequence-comprehensions-2",
   :id 292}
  {:description "Combinations of these transformations is trivial",
   :tests
   ["(= (quote (1 9 25 49 81)) (map (fn [index] (* index index)) (filter odd? (range 10))) (for [index (range 10) :when __] __))"],
   :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-3",
+  :tags ["sequence-comprehensions"],
+  :title "sequence-comprehensions-3",
   :id 293}
  {:description
   "More complex transformations simply take multiple binding forms",
   :tests
   ["(= [[:top :left] [:top :middle] [:top :right] [:middle :left] [:middle :middle] [:middle :right] [:bottom :left] [:bottom :middle] [:bottom :right]] (for [row [:top :middle :bottom] column [:left :middle :right]] __))"],
   :difficulty "Basic",
-  :tags ["comprehensions"],
-  :title "comprehensions-4",
+  :tags ["sequence-comprehensions"],
+  :title "sequence-comprehensions-4",
   :id 294}
  {:description
   "One may know what they seek by knowing what they do not seek",
   :tests
   ["(= [__] (let [not-a-symbol? (complement symbol?)]\n               (map not-a-symbol? [:a 'b \"c\"])))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-0",
+  :tags ["creating-functions"],
+  :title "creating-functions-0",
   :id 295}
  {:description
   "Praise and 'complement' may help you separate the wheat from the chaff",
   :tests
   ["(= [:wheat \"wheat\" 'wheat]\n       (let [not-nil? __]\n         (filter not-nil? [nil :wheat nil \"wheat\" nil 'wheat nil])))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-1",
+  :tags ["creating-functions"],
+  :title "creating-functions-1",
   :id 296}
  {:description "Partial functions allow procrastination",
   :tests
   ["(= 20 (let [multiply-by-5 (partial * 5)]\n            (__)))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-2",
+  :tags ["creating-functions"],
+  :title "creating-functions-2",
   :id 297}
  {:description "Don't forget: first things first",
   :tests
   ["(= [__]\n       (let [ab-adder (partial concat [:a :b])]\n         (ab-adder [__])))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-3",
+  :tags ["creating-functions"],
+  :title "creating-functions-3",
   :id 298}
  {:description "Functions can join forces as one 'composed' function",
   :tests
   ["(= 25 (let [square (fn [x] (* x x))\n                inc-and-square (comp square inc)]\n            (inc-and-square __)))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-4",
+  :tags ["creating-functions"],
+  :title "creating-functions-4",
   :id 299}
  {:description "Have a go on a double dec-er",
   :tests
   ["(= __ (let [double-dec (comp dec dec)]\n             (double-dec 10)))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-5",
+  :tags ["creating-functions"],
+  :title "creating-functions-5",
   :id 300}
  {:description
   "Be careful about the order in which you mix your functions",
   :tests
   ["(= 99 (let [square-and-dec __]\n            (square-and-dec 10)))"],
   :difficulty "Basic",
-  :tags ["functions"],
-  :title "functions-6",
+  :tags ["creating-functions"],
+  :title "creating-functions-6",
   :id 301}
  {:description "Destructuring is an arbiter: it breaks up arguments",
   :tests ["(= __ ((fn [[a b]] (str b a))\n            [:foo :bar]))"],
