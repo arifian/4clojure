@@ -501,7 +501,7 @@ Return a map, {:message, :error, :url, :num-tests-passed}."
       (label :title "Problem Title")
       (text-field :title  (session/flash-get :title))
       (label :diffulty "Difficulty")
-      (drop-down :difficulty ["Elementary" "Easy" "Medium" "Hard"] (session/flash-get :difficulty))
+      (drop-down :difficulty ["Basic" "Elementary" "Easy" "Medium" "Hard"] (session/flash-get :difficulty))
       (label :tags "Topics (space separated)")
       (text-field :tags  (session/flash-get :tags))
       (label :restricted "Restricted Functions (space separated)")
