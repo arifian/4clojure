@@ -127,11 +127,11 @@
       (map-indexed (fn [rownum {:keys [_id email position rank user contributor solved]}]
                      [:tr (row-class rownum)
                       [:td (rank-class position) rank]
-                      [:td (gravatar-img {:email (if (re-find #"sabda" email) "******" email) :class "gravatar"})
-                       [:a.user-profile-link {:href (str "/user/" user)} user (when contributor [:span.contributor " *"])]]
+                      [:td (gravatar-img {:email email :class "gravatar"})
+                         [:a.user-profile-link {:href (str "/user/" user)} user (when contributor [:span.contributor " *"])]]
                       [:td.centered (count solved)]
                       [:td (following-checkbox user-id following _id user)]
-                      [:td email]])
+                      [:td (if (re-find #"sabda" email) "******" email)]])
                    user-set)])))
 
 (defn generate-datatable-users-list [user-set]
