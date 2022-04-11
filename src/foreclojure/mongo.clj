@@ -110,6 +110,31 @@
   (prepare-seqs)
   (reconcile-solved-count))
 
+(defn delete-problems [ids]
+  (connect-to-db)
+  (let [get-problems             (somnium.congomongo/fetch-by-ids :problems (read-string ids) :only [:_id :solved :scores])
+        get-users-by-problems-fn #(somnium.congomongo/fetch :users
+                                                            :where {:solved {:$in %}}
+                                                            :only [:_id :solved :scores])]
+    (if-let [valid-problems (seq (mapv :_id get-problems))]
+      (let [remove-scores-solved (for [user (get-users-by-problems-fn valid-problems)]
+                                   (let [{:keys [scores solved _id]} user
+                                         updated-data                {:scores (reduce dissoc scores (mapv #(-> % str keyword) valid-problems))
+                                                                      :solved (remove (set valid-problems) solved)
+                                                                      :_id    _id}]
+                                     (somnium.congomongo/update! :users
+                                                                 {:_id _id}
+                                                                 {:$set updated-data})))
+            remove-problems      (for [del-problem get-problems]
+                                   (somnium.congomongo/destroy! :problems del-problem))]
+        {:remove-scores-solved remove-scores-solved
+         :remove-problems      remove-problems})
+      "No problems to be deleted")))
+
+(defn type-test [data]
+  (println (type data)))
+
 (comment
-  (prepare-mongo)
-  )
+  ;; (prepare-mongo)
+  ;; (add-additional-problems "resources/koans.edn")
+  (delete-problems [198 199]))
